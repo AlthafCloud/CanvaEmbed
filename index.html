@@ -1,19 +1,53 @@
-<!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container" style="height:100%;width:100%">
-  <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-  {
-  "autosize": true,
-  "symbol": "NASDAQ:AAPL",
-  "interval": "D",
-  "timezone": "Etc/UTC",
-  "theme": "dark",
-  "style": "1",
-  "locale": "en",
-  "allow_symbol_change": true,
-  "support_host": "https://www.tradingview.com"
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AAPL Chart - Lightweight Charts</title>
+  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #0e0e0e;
+    }
+    #chart {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="chart"></div>
+
+  <script>
+    const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+      layout: {
+        background: { color: '#0e0e0e' },
+        textColor: '#d1d4dc',
+      },
+      grid: {
+        vertLines: { color: '#363c4e' },
+        horzLines: { color: '#363c4e' },
+      },
+      timeScale: {
+        timeVisible: true,
+        secondsVisible: false,
+      },
+    });
+
+    const candleSeries = chart.addCandlestickSeries();
+
+    // Sample AAPL-like data for display (replace this with real data via API if you want!)
+    candleSeries.setData([
+      { time: '2024-04-01', open: 170, high: 172, low: 169, close: 171 },
+      { time: '2024-04-02', open: 171, high: 173, low: 170, close: 172 },
+      { time: '2024-04-03', open: 172, high: 175, low: 171, close: 174 },
+      { time: '2024-04-04', open: 174, high: 176, low: 173, close: 175 },
+      { time: '2024-04-05', open: 175, high: 178, low: 174, close: 177 },
+    ]);
   </script>
-</div>
-<!-- TradingView Widget END -->
+</body>
+</html>
