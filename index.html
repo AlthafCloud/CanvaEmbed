@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AAPL Chart - Lightweight Charts</title>
-  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
   <style>
     html, body {
       margin: 0;
@@ -21,6 +20,9 @@
 </head>
 <body>
   <div id="chart"></div>
+
+  <!-- Correct CDN for Lightweight Charts -->
+  <script src="https://unpkg.com/lightweight-charts@4.1.1/dist/lightweight-charts.standalone.production.js"></script>
 
   <script>
     const chart = LightweightCharts.createChart(document.getElementById('chart'), {
@@ -40,7 +42,6 @@
 
     const candleSeries = chart.addCandlestickSeries();
 
-    // Sample AAPL-like data for display (replace this with real data via API if you want!)
     candleSeries.setData([
       { time: '2024-04-01', open: 170, high: 172, low: 169, close: 171 },
       { time: '2024-04-02', open: 171, high: 173, low: 170, close: 172 },
